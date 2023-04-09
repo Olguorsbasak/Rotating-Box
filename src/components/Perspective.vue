@@ -1,4 +1,3 @@
-<!-- src/components/RotateBox.vue -->
 <template>
   <div>
     <div class="rotate-box" :style="rotateStyle"></div>
@@ -9,7 +8,9 @@
       <Slider class="slider" v-model="y" :min="-180" :max="180" />
       <p>Rotate Z</p>
       <Slider class="slider" v-model="z" :min="-180" :max="180" />
-      <ResetButton class="mt-6" @reset="reset" />
+
+      <ResetButton class="mt-6 mr-3" @reset="reset" />
+      <CopyButton :rotate-style="rotateStyle" />
     </div>
   </div>
 </template>
@@ -17,11 +18,13 @@
 <script>
 import Slider from "primevue/slider";
 import ResetButton from "./ResetButton.vue";
+import CopyButton from "./CopyButton.vue";
 
 export default {
   components: {
     Slider,
     ResetButton,
+    CopyButton,
   },
   data() {
     return {
