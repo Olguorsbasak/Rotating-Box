@@ -9,22 +9,26 @@
       <Slider class="slider" v-model="y" :min="-180" :max="180" />
       <p>Rotate Z</p>
       <Slider class="slider" v-model="z" :min="-180" :max="180" />
+      <ResetButton class="mt-6" @reset="reset" />
     </div>
   </div>
 </template>
 
 <script>
 import Slider from "primevue/slider";
+import ResetButton from "./ResetButton.vue";
 
 export default {
   components: {
     Slider,
+    ResetButton,
   },
   data() {
     return {
       x: 0,
       y: 0,
       z: 0,
+      perspective: 1000,
     };
   },
   computed: {
@@ -32,6 +36,14 @@ export default {
       return {
         transform: `rotateX(${this.x}deg) rotateY(${this.y}deg) rotateZ(${this.z}deg)`,
       };
+    },
+  },
+  methods: {
+    reset() {
+      this.x = 0;
+      this.y = 0;
+      this.z = 0;
+      this.perspective = 1000;
     },
   },
 };
